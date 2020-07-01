@@ -1,0 +1,74 @@
+.input-card{
+  &__top-row {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+  }
+
+  &__description {
+    flex: 10
+  }
+
+  &__amount {
+    flex: 10 
+  }
+
+  &__persons {
+    width: 60px;
+    flex: 1;
+    .fa {
+      margin-right: 8px;
+      height: 100%;
+    }
+  }
+
+  &__name {
+    flex: 9;
+  }
+
+  &__expense {
+    text-align: right;
+    flex: 6;
+  }
+
+  &__balance {
+    text-align: right;
+    flex: 5;
+    color: $primary-color;
+
+    &--negative {
+      color: $accent-color;
+    }
+
+  }
+
+  &__edit {
+    text-align: right;
+    margin-left: 15px;
+    
+    :hover {
+        cursor: pointer;
+    }
+  }
+
+  
+  
+  &__delete {
+    text-align: right;
+    margin: 0px 5px 0px 12px;
+    
+    :hover {
+        cursor: pointer;
+    }
+  }
+}
+
+.expanded{
+  border-top:1px solid #e8e8e8;
+  border-bottom:1px solid #e8e8e8;
+}

@@ -1,0 +1,30 @@
+.event-name{
+  margin: 24px 10px 24px 10px;
+  text-align: center;
+}
+
+.event-name-edit {
+  margin: 24px 0px 24px 0px;
+  text-align: center;
+
+  &__input-row {
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+    border-bottom-color: #DDDDDD;
+    display: inline-block;
+    align-items: center;
+    text-align: left;
+
+    > input {
+      width: 100%;
+      outline: none;
+      border: none;
+      height: 50px;
+      background: $primary-color-xlight;
+      color: $normal-font-color;
+      text-align: center;
+    }
+  }
+}

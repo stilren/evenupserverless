@@ -1,0 +1,23 @@
+
+.content{
+        padding-top: 64px;
+    @media (min-width: 900px){
+  max-width: 900px;
+  
+      margin: 0 auto !important;
+      float: none !important;
+
+    }
+}
+
+.wrapper{
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.container {
+}
+
+
+body {
+    background-color: $secondary-color;
+}

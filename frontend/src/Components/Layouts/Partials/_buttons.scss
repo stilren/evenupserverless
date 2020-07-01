@@ -1,0 +1,19 @@
+$border-radius: 32px;
+$min-width: 180px;
+$font-size: 14px;
+$padding: 15px;
+
+.button-primary {
+    display:inline-block;
+    border:1px solid #CCC;
+    background: $primary-color;
+    box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+    cursor:pointer;
+    vertical-align:middle;
+    padding: $padding;
+    text-align: center;
+    font-size: $font-size;
+    color: $secondary-color;
+    border-radius: $border-radius;
+    min-width: $min-width;
+}

@@ -1,0 +1,4 @@
+.transaction-card {
+    display: flex;                  /* establish flex container */
+    justify-content: space-between; /* switched from default (flex-start, see below) */
+}

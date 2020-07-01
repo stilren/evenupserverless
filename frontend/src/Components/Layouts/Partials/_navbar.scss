@@ -1,0 +1,19 @@
+
+
+.share-container{
+    display: inline-block;
+    position: absolute;
+    left: 90%;
+    @media(min-width: 900px){
+        left: 95%;
+    }
+}
+
+.appbar{
+    
+  @media (min-width: 900px){
+      width: 900px !important; 
+      left: 50%;
+      margin-left: -450px;
+  }
+}

@@ -1,0 +1,63 @@
+.header-large { 
+    font-family: $base-font-family;
+    color: $normal-font-color;
+    font-weight: $bold;
+    font-size: 32px;
+}
+
+.header-medium-light { 
+    font-family: $base-font-family;
+    color: $normal-font-color;
+    font-weight: $regular;
+    font-size: 32px;
+}
+
+
+.header-large-light { 
+    font-family: $base-font-family;
+    color: $normal-font-color;
+    font-weight: $regular;
+    font-size: 48px;
+}
+
+.header-normal { 
+    font-family: $base-font-family;
+    color: $normal-font-color;
+    font-weight: $regular;
+    font-size: 26px;
+}
+
+.header-small-light { 
+    font-family: $base-font-family;
+    color: $light-font-color;
+    font-weight: $regular;
+    font-size: 18px;
+}
+
+.header-small { 
+    font-family: $base-font-family;
+    color: $normal-font-color;
+    font-weight: $regular;
+    font-size: 26px;
+}
+
+.body-normal-light {
+    font-family: $base-font-family;
+    color: $light-font-color;
+    font-weight: $light;
+    font-size: 16px;
+}
+
+.body-small-light {
+    font-family: $base-font-family;
+    color: $light-font-color;
+    font-weight: $light;
+    font-size: 13px;
+}
+
+.body-small-xlight {
+    font-family: $base-font-family;
+    color: $xlight-font-color;
+    font-weight: $light;
+    font-size: 13px;
+}

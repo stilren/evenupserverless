@@ -1,0 +1,55 @@
+.add-row {
+  margin-top: 28px;
+  font-size: 18px;
+  padding: 10px;
+  text-align: right;
+  background: $positive-color-xlight;
+  
+  &__close-icon {
+    text-align: right;
+
+    :hover {
+        cursor: pointer;
+    }
+  }
+
+  &__submit {
+    text-align: center;
+    margin: 14px 0px 14px 0px;
+  }
+
+}
+
+.add-input-row {
+  border-bottom-style: solid;
+  border-bottom-width: thin;
+  border-bottom-color: #DDDDDD;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  
+  &__label {
+    margin-bottom: 0;
+    flex: 5;
+  }
+
+  &__input {
+    align-items: center;
+
+    > input {
+      outline: none;
+      border: none;
+      height: 50px;
+      background: $positive-color-xlight;
+      margin: 0px 10px 0px 10px;
+      color: $normal-font-color;
+      align-items: stretch;
+      
+    }
+  }
+
+  &__icon {
+
+  }
+}

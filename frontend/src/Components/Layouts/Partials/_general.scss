@@ -1,0 +1,22 @@
+.hide-mobile{
+    @media(max-width: 768px){
+        display: none !important;
+    }
+}
+
+.hide-desktop{
+    @media(min-width: 768px){
+        display: none !important;
+    }
+}
+
+.pointer{
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.inline-icon {
+    display: inline-block;
+    vertical-align: -35%;
+}
