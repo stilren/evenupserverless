@@ -2,9 +2,10 @@ import store from '../store'
 import * as actions from '../actions/event-actions'
 import { LOCAL_STORAGE_KEY, DEFAULT_EVENT_NAME } from '../Helpers/Constants'
 import outputs from '../outputs.json'
+const baseUrl = outputs.BackendStack.GATEWAYURL
 
 function getEventById(id) {
-    return fetch(baseUrl + '/events/' + id, {
+    return fetch(baseUrl + 'events/' + id, {
         accept: 'application/json',
         method: 'GET'
     }).then(checkStatus)
@@ -15,7 +16,6 @@ function getEventById(id) {
         });
 }
 
-const baseUrl = outputs.BackendStack.GATEWAYURL
 
 function createNewEvent(cb) {
     return fetch(baseUrl + 'events', {
@@ -49,7 +49,7 @@ function updateEventName(event, cb) {
 
 function deletePersonById(personId) {
     const id = store.getState().eventState.eventId;
-    return fetch(location.origin + '/api/events/' + id + '/people/' + personId, {
+    return fetch(baseUrl + 'events/' + id + '/people/' + personId, {
         accept: 'application/json',
         method: 'delete'
     }).then(checkStatus)
@@ -59,7 +59,7 @@ function deletePersonById(personId) {
 
 function updatePersonToEvent(person) {
     const id = store.getState().eventState.eventId;
-    return fetch(location.origin + '/api/events/' + id + "/people/" + person.personId, {
+    return fetch(baseUrl + 'events/' + id + "/people/" + person.personId, {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -74,7 +74,7 @@ function updatePersonToEvent(person) {
 
 function addPersonToEvent(person) {
     const id = store.getState().eventState.eventId;
-    return fetch(location.origin + '/api/events/' + id + "/people", {
+    return fetch(baseUrl + 'events/' + id + "/people", {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -89,7 +89,7 @@ function addPersonToEvent(person) {
 
 function addExpense(expense) {
     const id = store.getState().eventState.eventId;
-    return fetch(location.origin + '/api/events/' + id + "/expense", {
+    return fetch(baseUrl + 'events/' + id + "/expense", {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -104,7 +104,7 @@ function addExpense(expense) {
 
 function updateExpense(expense) {
     const id = store.getState().eventState.eventId;
-    return fetch(location.origin + '/api/events/' + id + "/expense/" + expense.expenseId, {
+    return fetch(baseUrl + 'events/' + id + "/expense/" + expense.expenseId, {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -119,7 +119,7 @@ function updateExpense(expense) {
 
 function deleteExpense(expense) {
     const id = store.getState().eventState.eventId;
-    return fetch(location.origin + '/api/events/' + id + "/expense/" + expense.expenseId, {
+    return fetch(baseUrl + 'events/' + id + "/expense/" + expense.expenseId, {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'

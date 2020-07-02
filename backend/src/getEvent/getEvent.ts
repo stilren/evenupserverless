@@ -5,7 +5,7 @@ const TABLE_NAME = process.env.TABLE_NAME || '';
 
 export const handler = async (event: any = {}) : Promise <any> => {
 
-  const requestedItemId = event.pathParameters.id;
+  const requestedItemId = event.pathParameters.eventId;
   if (!requestedItemId) {
     return { statusCode: 400, body: `Error: You are missing the path parameter id` };
   }

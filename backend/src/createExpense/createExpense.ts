@@ -1,8 +1,5 @@
-import { GetEvent, SaveEvent, EventViewModel } from "repo";
-
-const AWS = require('aws-sdk');
-const db = new AWS.DynamoDB.DocumentClient();
-const TABLE_NAME = process.env.TABLE_NAME || '';
+import { GetEvent, SaveEvent, EventViewModel, PersonViewModel, ExpenseViewModel } from "repo";
+const { v4: uuidv4 } = require('uuid');
 
 export const handler = async (event: any = {}) : Promise <any> => {
 
@@ -11,10 +8,11 @@ export const handler = async (event: any = {}) : Promise <any> => {
     return { statusCode: 400, body: `Error: You are missing the path parameter id` };
   }
 
-  const name = event.body as string
+  const expense = JSON.parse(event.body) as ExpenseViewModel
+  expense.expenseId = uuidv4();
   try {
     const myevent = await GetEvent(requestedItemId) as EventViewModel
-    myevent.name = name
+    myevent.expenses.push(expense)
     await SaveEvent(requestedItemId, myevent)
     return { statusCode: 200, body: JSON.stringify(myevent) };
   } catch (dbError) {

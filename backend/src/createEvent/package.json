@@ -9,9 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "uuid": "^8.2.0"
-  },
-  "devDependencies": {
-    "repo": "file:../layers/repo/dist/nodejs/node_modules/repo"
+    "uuid": "^8.2.0",
+    "repo": "file:../common/repo"
   }
 }

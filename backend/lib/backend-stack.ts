@@ -35,6 +35,7 @@ export class BackendStack extends cdk.Stack {
     const websiteBucket = new s3.Bucket(this, "WebsiteBucket",
       {
         websiteIndexDocument: "index.html",
+        websiteErrorDocument: "index.html",
         blockPublicAccess: new s3.BlockPublicAccess({ restrictPublicBuckets: false })
       });
 
@@ -52,36 +53,34 @@ export class BackendStack extends cdk.Stack {
       tableName: 'EvenupEventsProd',
     });
 
-    const layer = new lambda.LayerVersion(this, 'MyLayer', {
-      code: lambda.Code.fromAsset('src/layers/repo/dist'),
-      compatibleRuntimes: [lambda.Runtime.NODEJS_10_X],
-      license: 'Apache-2.0',
-      description: 'A layer to test the L2 construct',
-    });
-
-
     const lambdas = [
       { name: "createEvent", verb: apigateway.HttpMethod.POST, route: "/events" },
-      { name: "getEvent", verb: apigateway.HttpMethod.GET, route:"/events/{id}" },
-      { name: "updateName", verb: apigateway.HttpMethod.PUT, route:"/events/{id}/name" },
+      { name: "getEvent", verb: apigateway.HttpMethod.GET, route:"/events/{eventId}" },
+      { name: "updateName", verb: apigateway.HttpMethod.PUT, route:"/events/{eventId}/name" },
+      { name: "createPerson", verb: apigateway.HttpMethod.POST, route:"/events/{eventId}/people" },
+      { name: "updatePerson", verb: apigateway.HttpMethod.PUT, route:"/events/{eventId}/people/{personId}" },
+      { name: "deletePerson", verb: apigateway.HttpMethod.DELETE, route:"/events/{eventId}/people/{personId}" },
+      { name: "createExpense", verb: apigateway.HttpMethod.POST, route:"/events/{eventId}/expense" },
+      { name: "updateExpense", verb: apigateway.HttpMethod.PUT, route:"/events/{eventId}/expense/{expenseId}" },
+      { name: "deleteExpense", verb: apigateway.HttpMethod.DELETE, route:"/events/{eventId}/expense/{expenseId}" },
     ]
 
-    provisionLambdas(this, lambdas, dynamoTable, httpApi, layer);
+    provisionLambdas(this, lambdas, dynamoTable, httpApi);
 
    
     new cdk.CfnOutput(this, "GATEWAY_URL", { value: httpApi.url! })
     new cdk.CfnOutput(this, "BUCKET_URL", { value: websiteBucket.bucketWebsiteUrl! })
+    new cdk.CfnOutput(this, "BUCKET_NAME", { value: websiteBucket.bucketName! })
     new cdk.CfnOutput(this, "REGION", { value: cdk.Aws.REGION! })
   }
 }
 
-function provisionLambdas(stack: cdk.Construct, lambdas: ILambda[], dynamoTable: dynamodb.Table, httpApi: apigateway.HttpApi, layer: lambda.LayerVersion) {
+function provisionLambdas(stack: cdk.Construct, lambdas: ILambda[], dynamoTable: dynamodb.Table, httpApi: apigateway.HttpApi) {
   lambdas.forEach(l => {
     const handler = new lambda.Function(stack, l.name, {
       code: new lambda.AssetCode(`src/${l.name}`),
       handler: `${l.name}.handler`,
       runtime: lambda.Runtime.NODEJS_10_X,
-      layers: [layer],
       environment: {
         TABLE_NAME: dynamoTable.tableName,
       }
